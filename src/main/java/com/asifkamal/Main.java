@@ -2,6 +2,7 @@ package com.asifkamal;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.function.BinaryOperator;
 
 //TIP To <b>Run</b> code, press <shortcut actionId="Run"/> or
 // click the <icon src="AllIcons.Actions.Execute"/> icon in the gutter.
@@ -10,5 +11,17 @@ public class Main {
 
         List<String> list = new ArrayList<>(List.of("Anna", "Bob", "Chuck", "Dave"));
         list.forEach(System.out::println);
+
+        //static method on a class, class type on the left
+        calculator(Integer::sum, 5, 10);
+        calculator(Integer::max, 5, 10);
+        calculator(Integer::min, 5, 10);
+        calculator(Double::sum, 5.4, 10.6);
+    }
+
+    private static <T> void calculator(BinaryOperator<T> function, T value1, T value2) {
+        T result = function.apply(value1, value2);
+        System.out.println("Result: " + result);
+
     }
 }
