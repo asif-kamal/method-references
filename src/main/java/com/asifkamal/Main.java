@@ -3,9 +3,18 @@ package com.asifkamal;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.function.BinaryOperator;
+import java.util.function.Supplier;
 
-//TIP To <b>Run</b> code, press <shortcut actionId="Run"/> or
-// click the <icon src="AllIcons.Actions.Execute"/> icon in the gutter.
+class PlainOld {
+    private static int last_id = 1;
+    private int id;
+
+    public PlainOld() {
+        this.id = last_id++;
+        System.out.println("Plain Old Constructor id " + id);
+    }
+}
+
 public class Main {
     public static void main(String[] args) {
 
@@ -17,6 +26,8 @@ public class Main {
         calculator(Integer::max, 5, 10);
         calculator(Integer::min, 5, 10);
         calculator(Double::sum, 5.4, 10.6);
+
+        Supplier<PlainOld> reference1 = PlainOld::new;
     }
 
     private static <T> void calculator(BinaryOperator<T> function, T value1, T value2) {
