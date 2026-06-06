@@ -28,6 +28,8 @@ public class Main {
         calculator(Double::sum, 5.4, 10.6);
 
         Supplier<PlainOld> reference1 = PlainOld::new;
+
+        PlainOld reference2 = reference1.get();
     }
 
     private static <T> void calculator(BinaryOperator<T> function, T value1, T value2) {
