@@ -36,6 +36,11 @@ public class Main {
 
         calculator((s1, s2) -> s1.concat(s2), "Hello ", "World");
         calculator(String::concat, "Hello ", "World");
+
+        String result = "Hello".transform(String::toUpperCase);
+        System.out.println("Result: " + result);
+
+
     }
 
     private static <T> void calculator(BinaryOperator<T> function, T value1, T value2) {
