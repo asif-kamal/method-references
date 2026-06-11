@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 import java.util.function.BinaryOperator;
+import java.util.function.Function;
 import java.util.function.Supplier;
 
 class PlainOld {
@@ -40,7 +41,9 @@ public class Main {
         String result = "Hello".transform(String::toUpperCase);
         System.out.println("Result: " + result);
 
-
+        Function<String, Boolean> f0 = String::isEmpty;
+        boolean resultBoolean = result.transform(f0);
+        System.out.println("Result: " + resultBoolean);
     }
 
     private static <T> void calculator(BinaryOperator<T> function, T value1, T value2) {
