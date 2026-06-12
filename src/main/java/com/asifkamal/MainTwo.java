@@ -1,5 +1,6 @@
 package com.asifkamal;
 
+import java.util.Arrays;
 import java.util.List;
 import java.util.Random;
 import java.util.function.UnaryOperator;
@@ -15,6 +16,10 @@ public class MainTwo {
     }
 
     private static void applyChanges(String[] names, List<UnaryOperator<String>> changes) {
-
+        List<String> backedByArray = Arrays.asList(names); // create list backed by array, names
+        for (var function : changes) { // looping through functions
+            backedByArray.replaceAll(s -> s.transform(function)); // operate on each name by function
+            System.out.println(Arrays.toString(names));
+        }
     }
 }
