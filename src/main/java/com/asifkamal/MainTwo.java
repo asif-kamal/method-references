@@ -1,5 +1,6 @@
 package com.asifkamal;
 
+import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 import java.util.Random;
@@ -12,7 +13,11 @@ public class MainTwo {
     public static void main(String[] args) {
         String[] arr = {"HaRRy", "PoTTEr", "Ronald", "weasley", "HERMIONE", "gRAINger"};
 
+        List<UnaryOperator<String>> list = new ArrayList<>(List.of(
+                String::toUpperCase
+        ));
 
+        applyChanges(arr, list);
     }
 
     private static void applyChanges(String[] names, List<UnaryOperator<String>> changes) {
