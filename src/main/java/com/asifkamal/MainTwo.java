@@ -14,7 +14,8 @@ public class MainTwo {
         String[] arr = {"HaRRy", "PoTTEr", "Ronald", "weasley", "HERMIONE", "gRAINger"};
 
         List<UnaryOperator<String>> list = new ArrayList<>(List.of(
-                String::toUpperCase
+                String::toUpperCase,
+                s -> s += " " + getRandomChar('A', 'Z') + "."
         ));
 
         applyChanges(arr, list);
@@ -26,5 +27,10 @@ public class MainTwo {
             backedByArray.replaceAll(s -> s.transform(function)); // operate on each name by function
             System.out.println(Arrays.toString(names));
         }
+    }
+
+    private static char getRandomChar(char start, char end) {
+        return (char) random.nextInt((int) start, (int) end + 1);
+
     }
 }
