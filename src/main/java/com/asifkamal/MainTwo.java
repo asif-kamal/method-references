@@ -15,7 +15,8 @@ public class MainTwo {
 
         List<UnaryOperator<String>> list = new ArrayList<>(List.of(
                 String::toUpperCase,
-                s -> s += " " + getRandomChar('A', 'Z') + "."
+                s -> s += " " + getRandomChar('A', 'Z') + ".",
+                MainTwo::reverse
         ));
 
         applyChanges(arr, list);
@@ -32,5 +33,13 @@ public class MainTwo {
     private static char getRandomChar(char start, char end) {
         return (char) random.nextInt((int) start, (int) end + 1);
 
+    }
+
+    private static String reverse(String s) {
+        return reverse(s, 0, s.length());
+    }
+
+    private static String reverse(String s, int start, int end) {
+        return new StringBuilder(s.substring(start, end)).reverse().toString();
     }
 }
