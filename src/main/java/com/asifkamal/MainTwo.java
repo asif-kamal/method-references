@@ -10,13 +10,26 @@ public class MainTwo {
 
     private static Random random = new Random();
 
+    private record Person(String firstName) {
+        public String lastName(String s) {
+            return firstName + " " + s.substring(0, s.indexOf(" "));
+        }
+    }
+
     public static void main(String[] args) {
+
+        Person person1 = new Person("John");
+
         String[] arr = {"HaRRy", "PoTTEr", "Ronald", "weasley", "HERMIONE", "gRAINger"};
 
         List<UnaryOperator<String>> list = new ArrayList<>(List.of(
-                String::toUpperCase,
+                String::toUpperCase, //instance method unbounded receiver
                 s -> s += " " + getRandomChar('A', 'Z') + ".",
-                MainTwo::reverse
+                s -> s += " " + reverse(s, 0, s.indexOf(" ")),
+                MainTwo::reverse, //static method reference
+                String::new, //String constructor method reference
+                String::valueOf,
+                person1::lastName // instance method called on an instance using a bounded receiver
         ));
 
         applyChanges(arr, list);
